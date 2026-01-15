@@ -1,4 +1,4 @@
-/* Remove all content, just keep this: */
+/* Remove all Tailwind directives since we're using CDN */
 body {
   margin: 0;
   padding: 0;

@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Right Click Institute - Mathematics Coaching Center</title>
     
-    <!-- Official Tailwind CSS Play CDN -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Custom configuration for your institute -->
+    <!-- Custom configuration -->
     <script>
       tailwind.config = {
         theme: {
@@ -18,8 +18,6 @@
               primary: '#3b82f6',
               secondary: '#1e40af',
               accent: '#f59e0b',
-              'blue-800': '#1e40af',
-              'red-600': '#dc2626',
             }
           }
         }
@@ -29,18 +27,15 @@
     <!-- Inter Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Custom styles -->
     <style>
       * {
         font-family: 'Inter', sans-serif;
       }
       
-      /* Smooth scrolling */
       html {
         scroll-behavior: smooth;
       }
       
-      /* Custom scrollbar */
       ::-webkit-scrollbar {
         width: 10px;
       }
@@ -56,6 +51,8 @@
       }
     </style>
   </head>
+  <!-- Backup styles in case Tailwind CDN fails -->
+<link rel="stylesheet" href="/src/backup-styles.css">
   <body class="bg-gray-50">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>

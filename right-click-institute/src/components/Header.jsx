@@ -8,21 +8,24 @@ const Header = () => {
     { name: 'Home', href: '#home' },
     { name: 'Programs', href: '#programs' },
     { name: 'Results', href: '#results' },
+    { name: 'Testimonials', href: '#testimonials' },
     { name: 'Contact', href: '#contact' },
   ];
 
   return (
     <header className="fixed w-full bg-white shadow-lg z-50">
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <div className="text-center">
-              <h1 className="text-2xl font-bold">
-                <span className="text-blue-800">RIGHT</span>
-                <span className="text-red-600"> CLICK</span>
-              </h1>
-              <p className="text-sm text-gray-600 -mt-1">INSTITUTE</p>
+              <div className="flex flex-col items-start">
+                <div className="flex items-baseline">
+                  <span className="text-2xl font-bold text-blue-800">RIGHT</span>
+                  <span className="text-2xl font-bold text-red-600 ml-1">CLICK</span>
+                </div>
+                <div className="text-xs text-gray-600 mt-[-2px]">INSTITUTE FOR MATHEMATICS</div>
+              </div>
             </div>
           </div>
 
