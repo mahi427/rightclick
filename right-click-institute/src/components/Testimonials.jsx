@@ -4,32 +4,36 @@ import { Star, Quote, User, GraduationCap } from 'lucide-react';
 const Testimonials = () => {
   const testimonials = [
     {
-      name: 'Rajesh Sharma',
-      grade: 'Scored 100/100 in 10th',
+      name: 'RAJESH SHARMA',
+      grade: 'Scored 100/100 in 10<sup>TH</sup>',
       text: 'Right Click Institute made mathematics my strongest subject. The systematic approach and regular tests helped me achieve perfect score!',
       rating: 5,
-      year: '2024'
+      year: '2024',
+      photo: 'student1.jpg'
     },
     {
-      name: 'Priya Verma',
+      name: 'PRIYA VERMA',
       grade: '+2 Student, JEE Aspirant',
       text: 'The JEE mathematics coaching here is exceptional. Faculty guidance helped me crack difficult problems with ease. Highly recommended!',
       rating: 5,
-      year: '2023'
+      year: '2023',
+      photo: 'student2.jpg'
     },
     {
-      name: 'Amit Kumar',
-      grade: '9th Student',
+      name: 'AMIT KUMAR',
+      grade: '9<sup>TH</sup> Student',
       text: 'From fearing mathematics to loving it! The teachers here make complex concepts so simple. My confidence has grown tremendously.',
       rating: 5,
-      year: '2024'
+      year: '2024',
+      photo: 'student3.jpg'
     },
     {
-      name: 'Sunita Rani',
+      name: 'SUNITA RANI',
       grade: 'Parent of +1 Student',
-      text: 'As a parent, I appreciate the regular updates and parent-teacher meetings. My child s progress is clearly visible. Thank you Right Click!',
+      text: 'As a parent, I appreciate the regular updates and parent-teacher meetings. My child progress is clearly visible. Thank you Right Click!',
       rating: 5,
-      year: '2023'
+      year: '2023',
+      photo: 'parent1.jpg'
     }
   ];
 
@@ -45,8 +49,8 @@ const Testimonials = () => {
           </p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        {/* Testimonials Grid - Wider Cards */}
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="bg-white rounded-xl shadow-lg p-6 relative hover:shadow-xl transition-shadow duration-300">
               <Quote className="w-8 h-8 text-gray-200 absolute top-6 right-6" />
@@ -55,16 +59,20 @@ const Testimonials = () => {
                   <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
-              <p className="text-gray-700 mb-6 italic">"{testimonial.text}"</p>
+              <p className="text-gray-700 mb-6 italic text-lg">"{testimonial.text}"</p>
               <div className="flex items-center">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-red-500 rounded-full flex items-center justify-center mr-4">
-                  <User className="w-6 h-6 text-white" />
+                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-red-500 rounded-full flex items-center justify-center mr-4 overflow-hidden">
+                  {/* Placeholder for student photo */}
+                  <div className="w-full h-full bg-blue-300 flex items-center justify-center">
+                    <User className="w-8 h-8 text-white" />
+                  </div>
+                  {/* Actual photo would be: <img src={testimonial.photo} alt={testimonial.name} className="w-full h-full object-cover" /> */}
                 </div>
-                <div>
-                  <h4 className="font-bold text-gray-800">{testimonial.name}</h4>
-                  <div className="flex items-center text-gray-600 text-sm">
-                    <GraduationCap className="w-4 h-4 mr-1" />
-                    {testimonial.grade}
+                <div className="flex-1">
+                  <h4 className="font-bold text-gray-800 text-lg">{testimonial.name}</h4>
+                  <div className="flex items-center text-gray-600">
+                    <GraduationCap className="w-4 h-4 mr-2" />
+                    <span dangerouslySetInnerHTML={{ __html: testimonial.grade }} />
                   </div>
                   <div className="text-sm text-gray-500 mt-1">Batch: {testimonial.year}</div>
                 </div>
@@ -95,7 +103,7 @@ const Testimonials = () => {
             
             <div className="text-center mt-6 md:mt-0">
               <a 
-                href="https://g.page/r/CWY6u6JN0PcMEAI/review" 
+                href="https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-white text-blue-600 px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors inline-block"

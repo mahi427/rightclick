@@ -7,26 +7,52 @@ const Contact = () => {
     phone: '',
     email: '',
     grade: '',
-    message: 'I am interested in admission and would like to schedule a free demo class.'
+    message: 'I am interested in admission and would like to schedule a free demo class.',
+    timing: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
+    // Prepare email data
+    const subject = `Admission Inquiry - ${formData.name}`;
+    const body = `
+Student Name: ${formData.name}
+Phone: ${formData.phone}
+Email: ${formData.email}
+Class: ${formData.grade}
+Preferred Timing: ${formData.timing}
+Message: ${formData.message}
+
+---
+Sent from Right Click Institute Website
+    `;
+    
+    // Create mailto link
+    const mailtoLink = `mailto:info@rightclickinstitute.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Reset form
     setTimeout(() => {
-      alert('Thank you! We will contact you shortly for free demo class.');
       setFormData({
         name: '',
         phone: '',
         email: '',
         grade: '',
-        message: 'I am interested in admission and would like to schedule a free demo class.'
+        message: 'I am interested in admission and would like to schedule a free demo class.',
+        timing: ''
       });
       setIsSubmitting(false);
+      setSubmitMessage('✅ Email client opened. Please send the email to submit your inquiry.');
+      
+      // Clear message after 5 seconds
+      setTimeout(() => setSubmitMessage(''), 5000);
     }, 1000);
   };
 
@@ -36,6 +62,9 @@ const Contact = () => {
       [e.target.name]: e.target.value
     });
   };
+
+  const classes = ['9TH', '10TH', '+1', '+2'];
+  const timings = ['Morning (6:30 AM - 8:30 AM)', 'Evening (4:00 PM - 8:30 PM)', 'Weekends Only'];
 
   return (
     <section id="contact" className="py-16 bg-white">
@@ -88,10 +117,12 @@ const Contact = () => {
                         📞 98881 44156
                       </a>
                       <a 
-                        href="tel:9888144156" 
-                        className="text-lg text-gray-700 hover:text-blue-600 block"
+                        href="https://wa.me/919888144156" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-lg text-gray-700 hover:text-green-600 block"
                       >
-                        📱 98881 44156 (WhatsApp)
+                        📱 WhatsApp: 98881 44156
                       </a>
                     </div>
                   </div>
@@ -163,7 +194,6 @@ const Contact = () => {
             <div className="mt-8 bg-white rounded-2xl p-6 shadow-lg">
               <h4 className="font-bold text-lg mb-4">Find Us on Google Maps</h4>
               <div className="h-64 bg-gray-200 rounded-xl overflow-hidden">
-                {/* Google Map Embed */}
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3410.7558586200964!2d75.5729!3d31.3269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5a5747a9e4ab%3A0x6b5b5c5e5d5e5d5e!2sCentral%20Town%2C%20Jalandhar%2C%20Punjab%20144001!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
                   width="100%"
@@ -174,17 +204,6 @@ const Contact = () => {
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Right Click Institute Location"
                 ></iframe>
-              </div>
-              <div className="mt-4 text-center">
-                <a 
-                  href="https://goo.gl/maps/YOUR_LOCATION_LINK" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-blue-600 hover:text-blue-800"
-                >
-                  <MapPin className="w-4 h-4 mr-2" />
-                  Get Directions
-                </a>
               </div>
             </div>
           </div>
@@ -197,9 +216,15 @@ const Contact = () => {
                   🎓 ADMISSION FORM 2025-26
                 </h3>
                 <p className="text-center opacity-90 mt-1">
-                  Limited Seats Available | Classes 9th to +2
+                  Limited Seats Available | Classes 9<sup>TH</sup> to +2
                 </p>
               </div>
+
+              {submitMessage && (
+                <div className={`mb-6 p-4 rounded-lg ${submitMessage.includes('✅') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                  {submitMessage}
+                </div>
+              )}
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
@@ -236,7 +261,7 @@ const Contact = () => {
 
                   <div>
                     <label className="block text-gray-700 font-medium mb-2">
-                      Email Address *
+                      Parent's Email *
                     </label>
                     <input
                       type="email"
@@ -250,24 +275,48 @@ const Contact = () => {
                   </div>
                 </div>
 
+                {/* Class Selection - Buttons */}
                 <div>
                   <label className="block text-gray-700 font-medium mb-2 flex items-center">
                     <GraduationCap className="w-4 h-4 mr-2" />
                     Select Class *
                   </label>
-                  <select
-                    name="grade"
-                    value={formData.grade}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  >
-                    <option value="">Select Class (9th to +2 only)</option>
-                    <option value="9th">9th Standard</option>
-                    <option value="10th">10th Standard</option>
-                    <option value="+1">+1 (11th Standard)</option>
-                    <option value="+2">+2 (12th Standard)</option>
-                  </select>
+                  <div className="grid grid-cols-2 gap-3">
+                    {classes.map((cls) => (
+                      <button
+                        key={cls}
+                        type="button"
+                        onClick={() => setFormData({...formData, grade: cls})}
+                        className={`py-3 rounded-lg border-2 font-bold transition-all ${formData.grade === cls ? 'bg-blue-600 text-white border-blue-600' : 'bg-white text-gray-700 border-gray-300 hover:border-blue-500'}`}
+                      >
+                        {cls}
+                      </button>
+                    ))}
+                  </div>
+                  {formData.grade && (
+                    <p className="mt-2 text-sm text-green-600">
+                      Selected: <span className="font-bold">{formData.grade}</span>
+                    </p>
+                  )}
+                </div>
+
+                {/* Timing Selection */}
+                <div>
+                  <label className="block text-gray-700 font-medium mb-2">
+                    Preferred Timing
+                  </label>
+                  <div className="space-y-2">
+                    {timings.map((time) => (
+                      <button
+                        key={time}
+                        type="button"
+                        onClick={() => setFormData({...formData, timing: time})}
+                        className={`w-full py-2 rounded-lg border text-left px-4 transition-all ${formData.timing === time ? 'bg-green-100 text-green-800 border-green-500' : 'bg-white text-gray-700 border-gray-300 hover:border-green-400'}`}
+                      >
+                        {time}
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
                 <div>
@@ -286,22 +335,25 @@ const Contact = () => {
 
                 <button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-blue-600 to-red-600 text-white py-4 rounded-xl font-bold text-lg hover:opacity-90 transition-opacity flex items-center justify-center disabled:opacity-50 shadow-lg"
+                  disabled={isSubmitting || !formData.grade}
+                  className="w-full bg-gradient-to-r from-blue-600 to-red-600 text-white py-4 rounded-xl font-bold text-lg hover:opacity-90 transition-opacity flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
                 >
                   {isSubmitting ? (
-                    'Processing...'
+                    'Opening Email...'
                   ) : (
                     <>
-                      <Send className="w-5 h-5 mr-2" />
-                      Submit Admission Request
+                      <Mail className="w-5 h-5 mr-2" />
+                      Send Inquiry via Email
                     </>
                   )}
                 </button>
 
                 <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
                   <p className="text-center font-medium text-yellow-800">
-                    ⚡ <strong>Immediate Response:</strong> We'll call you within 30 minutes to schedule your FREE DEMO CLASS
+                    ⚡ Your inquiry will open in email client. Please send it to submit.
+                  </p>
+                  <p className="text-center text-sm text-yellow-700 mt-1">
+                    Or call directly: <a href="tel:9888144156" className="font-bold">98881 44156</a>
                   </p>
                 </div>
               </form>

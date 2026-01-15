@@ -27,6 +27,9 @@
     <!-- Inter Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- Carousel CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
     <style>
       * {
         font-family: 'Inter', sans-serif;
@@ -49,12 +52,22 @@
       ::-webkit-scrollbar-thumb:hover {
         background: #1e40af;
       }
+      
+      .swiper-pagination-bullet {
+        background: #3b82f6 !important;
+        width: 12px !important;
+        height: 12px !important;
+      }
+      
+      .swiper-button-next, .swiper-button-prev {
+        color: #3b82f6 !important;
+      }
     </style>
   </head>
-  <!-- Backup styles in case Tailwind CDN fails -->
-<link rel="stylesheet" href="/src/backup-styles.css">
   <body class="bg-gray-50">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <!-- Carousel JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   </body>
 </html>

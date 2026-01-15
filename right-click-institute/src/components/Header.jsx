@@ -16,10 +16,10 @@ const Header = () => {
     <header className="fixed w-full bg-white shadow-lg z-50">
       <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
-          {/* Logo */}
+          {/* Logo on Left */}
           <div className="flex items-center space-x-3">
-            <div className="text-center">
-              <div className="flex flex-col items-start">
+            <div className="text-left">
+              <div className="flex flex-col">
                 <div className="flex items-baseline">
                   <span className="text-2xl font-bold text-blue-800">RIGHT</span>
                   <span className="text-2xl font-bold text-red-600 ml-1">CLICK</span>
@@ -30,7 +30,7 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-8 items-center">
             {navItems.map((item) => (
               <a
                 key={item.name}
@@ -40,15 +40,14 @@ const Header = () => {
                 {item.name}
               </a>
             ))}
+            {/* Contact Info in Navbar */}
+            <div className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg ml-4">
+              <Phone size={18} />
+              <a href="tel:9888144156" className="font-semibold">
+                98881 44156
+              </a>
+            </div>
           </nav>
-
-          {/* Contact Info */}
-          <div className="hidden md:flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg">
-            <Phone size={18} />
-            <a href="tel:9888144156" className="font-semibold">
-              98881 44156
-            </a>
-          </div>
 
           {/* Mobile Menu Button */}
           <button
