@@ -10,9 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "aos": "^2.3.4",
+    "framer-motion": "^12.27.0",
     "lucide-react": "^0.562.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-intersection-observer": "^10.0.2",
     "react-responsive-carousel": "^3.2.23"
   },
   "devDependencies": {
