@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, MapPin, Clock, Send, User, GraduationCap, Mail, Facebook, Instagram, Youtube } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -69,20 +70,32 @@ Sent from Right Click Institute Website
   return (
     <section id="contact" className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            <span className="text-blue-800">VISIT OUR</span>{' '}
-            <span className="text-red-600">CAMPUS</span>
+            <span className="text-blue-800">CONTACT</span>{' '}
+            <span className="text-red-600">US</span>
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
             Schedule a free demo class and experience our teaching methodology
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Information */}
           <div>
-            <div className="bg-gray-50 rounded-2xl p-8 shadow-lg">
+            <motion.div 
+              className="bg-gray-50 rounded-2xl p-8 shadow-lg"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
               <h3 className="text-2xl font-bold mb-6 text-gray-800">
                 Institute Details
               </h3>
@@ -162,36 +175,48 @@ Sent from Right Click Institute Website
               <div className="mt-8 pt-8 border-t">
                 <h4 className="font-bold text-lg mb-4">Connect With Us</h4>
                 <div className="flex space-x-4">
-                  <a 
+                  <motion.a 
                     href="https://facebook.com/rightclickinstitute" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                   >
                     <Facebook className="w-6 h-6" />
-                  </a>
-                  <a 
+                  </motion.a>
+                  <motion.a 
                     href="https://instagram.com/rightclickinstitute" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full flex items-center justify-center hover:opacity-90 transition-opacity"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                   >
                     <Instagram className="w-6 h-6" />
-                  </a>
-                  <a 
+                  </motion.a>
+                  <motion.a 
                     href="https://youtube.com/@rightclickinstitute" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center hover:bg-red-700 transition-colors"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                   >
                     <Youtube className="w-6 h-6" />
-                  </a>
+                  </motion.a>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Google Map */}
-            <div className="mt-8 bg-white rounded-2xl p-6 shadow-lg">
+            <motion.div 
+              className="mt-8 bg-white rounded-2xl p-6 shadow-lg"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
               <h4 className="font-bold text-lg mb-4">Find Us on Google Maps</h4>
               <div className="h-64 bg-gray-200 rounded-xl overflow-hidden">
                 <iframe
@@ -205,25 +230,35 @@ Sent from Right Click Institute Website
                   title="Right Click Institute Location"
                 ></iframe>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Admission Form */}
           <div>
-            <div className="bg-gradient-to-br from-blue-50 to-red-50 rounded-2xl p-8 shadow-lg">
+            <motion.div 
+              className="bg-gradient-to-br from-blue-50 to-red-50 rounded-2xl p-8 shadow-lg"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
               <div className="bg-gradient-to-r from-blue-600 to-red-600 text-white rounded-xl p-4 mb-6">
                 <h3 className="text-2xl font-bold text-center">
                   🎓 ADMISSION FORM 2025-26
                 </h3>
                 <p className="text-center opacity-90 mt-1">
-                  Limited Seats Available | Classes 9<sup>TH</sup> to +2
+                  Limited Seats Available | Classes 9TH to +2
                 </p>
               </div>
 
               {submitMessage && (
-                <div className={`mb-6 p-4 rounded-lg ${submitMessage.includes('✅') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                <motion.div 
+                  className={`mb-6 p-4 rounded-lg ${submitMessage.includes('✅') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
                   {submitMessage}
-                </div>
+                </motion.div>
               )}
 
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -283,14 +318,20 @@ Sent from Right Click Institute Website
                   </label>
                   <div className="grid grid-cols-2 gap-3">
                     {classes.map((cls) => (
-                      <button
+                      <motion.button
                         key={cls}
                         type="button"
                         onClick={() => setFormData({...formData, grade: cls})}
-                        className={`py-3 rounded-lg border-2 font-bold transition-all ${formData.grade === cls ? 'bg-blue-600 text-white border-blue-600' : 'bg-white text-gray-700 border-gray-300 hover:border-blue-500'}`}
+                        className={`py-3 rounded-lg border-2 font-bold transition-all ${
+                          formData.grade === cls 
+                          ? 'bg-blue-600 text-white border-blue-600' 
+                          : 'bg-white text-gray-700 border-gray-300 hover:border-blue-500'
+                        }`}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                       >
                         {cls}
-                      </button>
+                      </motion.button>
                     ))}
                   </div>
                   {formData.grade && (
@@ -307,14 +348,19 @@ Sent from Right Click Institute Website
                   </label>
                   <div className="space-y-2">
                     {timings.map((time) => (
-                      <button
+                      <motion.button
                         key={time}
                         type="button"
                         onClick={() => setFormData({...formData, timing: time})}
-                        className={`w-full py-2 rounded-lg border text-left px-4 transition-all ${formData.timing === time ? 'bg-green-100 text-green-800 border-green-500' : 'bg-white text-gray-700 border-gray-300 hover:border-green-400'}`}
+                        className={`w-full py-2 rounded-lg border text-left px-4 transition-all ${
+                          formData.timing === time 
+                          ? 'bg-green-100 text-green-800 border-green-500' 
+                          : 'bg-white text-gray-700 border-gray-300 hover:border-green-400'
+                        }`}
+                        whileHover={{ x: 5 }}
                       >
                         {time}
-                      </button>
+                      </motion.button>
                     ))}
                   </div>
                 </div>
@@ -333,10 +379,12 @@ Sent from Right Click Institute Website
                   ></textarea>
                 </div>
 
-                <button
+                <motion.button
                   type="submit"
                   disabled={isSubmitting || !formData.grade}
                   className="w-full bg-gradient-to-r from-blue-600 to-red-600 text-white py-4 rounded-xl font-bold text-lg hover:opacity-90 transition-opacity flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   {isSubmitting ? (
                     'Opening Email...'
@@ -346,7 +394,7 @@ Sent from Right Click Institute Website
                       Send Inquiry via Email
                     </>
                   )}
-                </button>
+                </motion.button>
 
                 <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
                   <p className="text-center font-medium text-yellow-800">
@@ -357,7 +405,7 @@ Sent from Right Click Institute Website
                   </p>
                 </div>
               </form>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

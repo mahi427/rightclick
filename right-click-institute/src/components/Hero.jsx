@@ -1,61 +1,99 @@
-import React from 'react';
-import { Target, Users, Award, Calendar, Trophy } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Target, Users, Award, Calendar, Brain } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Hero = () => {
+  const [counters, setCounters] = useState({
+    students: 0,
+    success: 0,
+    perfect: 0,
+    years: 0
+  });
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCounters({
+        students: 5000,
+        success: 98,
+        perfect: 12,
+        years: 17
+      });
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   const stats = [
-    { icon: Trophy, value: 'Since 2007', label: 'Established' },
+    { icon: Target, value: '5.0', label: 'Rating (29 reviews)' },
     { icon: Users, value: '5000+', label: 'Students Trained' },
-    { icon: Target, value: '98%', label: 'Success Rate' },
-    { icon: Award, value: '12', label: 'Students with 100/100' },
+    { icon: Award, value: '98%', label: 'Success Rate' },
+    { icon: Calendar, value: 'Since 2007', label: 'Years of Excellence' },
   ];
 
   return (
-    <section id="home" className="pt-20 pb-16 bg-gradient-to-r from-blue-600 to-red-600 text-white relative overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E")`,
-          backgroundSize: '300px'
-        }}></div>
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            <span className="text-blue-200">RIGHT CLICK INSTITUTE</span>
-          </h1>
-          <p className="text-2xl md:text-3xl font-semibold mb-2">For Mathematics Excellence</p>
-          <p className="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
-            Specialized coaching for 9th, 10th, +1, and +2 standards since 2007
-          </p>
+    <section id="home" className="pt-24 pb-16 bg-gradient-to-r from-blue-600 to-red-600 text-white">
+      <div className="container mx-auto px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h1 
+            className="text-4xl md:text-5xl font-bold mb-6"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            Master Mathematics from 9TH to 12TH Standard
+          </motion.h1>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <motion.p 
+            className="text-xl mb-8 opacity-90"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Right Click Institute - Where Math Makes Sense! Expert coaching, personalized attention, 
+            and proven results in Central Town, Jalandhar.
+          </motion.p>
+          
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
             <a
               href="#contact"
-              className="bg-accent text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-600 transition-colors shadow-lg"
+              className="bg-accent text-white px-8 py-3 rounded-lg font-semibold text-lg hover:bg-yellow-600 transition-colors shadow-lg"
             >
-              🎓 Book Free Demo Class
+              Book Free Demo Class
             </a>
             <a
-              href="#intro-video"
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg"
+              href="#programs"
+              className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors shadow-lg"
             >
-              ▶️ Watch Institute Video
+              View Our Programs
             </a>
-          </div>
+          </motion.div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+          <motion.div 
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="inline-flex items-center justify-center w-14 h-14 bg-white/20 rounded-full mb-3 backdrop-blur-sm">
-                  <stat.icon className="w-7 h-7" />
+              <motion.div 
+                key={index}
+                className="text-center"
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-white/20 rounded-full mb-3">
+                  <stat.icon className="w-6 h-6" />
                 </div>
                 <div className="text-3xl font-bold">{stat.value}</div>
                 <div className="text-sm opacity-80 mt-1">{stat.label}</div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -94,26 +94,6 @@ const About = () => {
             </div>
           </div>
         </div>
-
-        {/* Team Section */}
-        <div className="mt-16">
-          <h3 className="text-2xl font-bold text-center mb-8">Meet Our Expert Team</h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow">
-                <div className="w-20 h-20 bg-primary/10 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-2xl font-bold text-primary">
-                    {member.name.split(' ')[0].charAt(0)}{member.name.split(' ')[1].charAt(0)}
-                  </span>
-                </div>
-                <h4 className="text-xl font-semibold mb-2">{member.name}</h4>
-                <p className="text-primary font-medium mb-2">{member.role}</p>
-                <p className="text-gray-600 text-sm mb-1">{member.experience}</p>
-                <p className="text-gray-600 text-sm">{member.qualification}</p>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );

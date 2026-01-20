@@ -11,15 +11,15 @@ const AnimatedPrograms = () => {
       title: "BOARD EXCELLENCE PROGRAM",
       grades: "9TH & 10TH",
       subjects: ["MATHEMATICS", "SCIENCE"],
-      description: "Master CBSE/ICSE/PSEB syllabus with guaranteed success in board exams",
-      features: ["Complete Syllabus Coverage", "Regular Unit Tests", "Sample Paper Solving", "Time Management"],
+      description: "Master CBSE/ICSE/PSEB syllabus with focus on scoring 100/100 in board exams",
+      features: ["Complete Syllabus Coverage", "Regular Unit Tests","Exampler & PYQ question solved", "Time Management"],
       color: "blue",
       icon: BookOpen,
       stats: { students: 2500, success: 96 }
     },
     {
       id: 2,
-      title: "ADVANCED PROGRAM",
+      title: "ADVANCED IIT JEE PROGRAM",
       grades: "+1 & +2",
       subjects: ["MATHEMATICS"],
       description: "Specialized coaching for JEE (IIT) Mathematics with advanced problem solving",
@@ -27,17 +27,6 @@ const AnimatedPrograms = () => {
       color: "red",
       icon: Target,
       stats: { students: 1500, success: 94 }
-    },
-    {
-      id: 3,
-      title: "FOUNDATION PROGRAM",
-      grades: "6TH - 8TH",
-      subjects: ["MATHEMATICS"],
-      description: "Build strong mathematical foundation with interactive learning",
-      features: ["Concept Building", "Mental Math", "Logical Reasoning", "Fun Learning"],
-      color: "green",
-      icon: Brain,
-      stats: { students: 1000, success: 98 }
     }
   ];
 
@@ -101,8 +90,8 @@ const AnimatedPrograms = () => {
             transition={{ duration: 2, repeat: Infinity }}
           >
             <Sparkles className="w-8 h-8 text-yellow-500 mr-3" />
-            <span className="text-4xl md:text-5xl font-bold text-gradient">
-              OUR PROGRAMS
+            <span className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-red-600">
+              OUR SPECIALIZED PROGRAMS
             </span>
             <Sparkles className="w-8 h-8 text-yellow-500 ml-3" />
           </motion.div>
@@ -113,12 +102,12 @@ const AnimatedPrograms = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Transformative learning experiences for students from 6<sup>TH</sup> to 12<sup>TH</sup> grade
+            Transformative learning experiences for 9TH to 12TH grade students
           </motion.p>
         </motion.div>
 
-        {/* Animated Programs Grid */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        {/* Animated Programs Grid - Only 2 Cards */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {programs.map((program, index) => (
             <motion.div
               key={program.id}
@@ -135,8 +124,7 @@ const AnimatedPrograms = () => {
               {/* Glow Effect on Hover */}
               <motion.div
                 className={`absolute -inset-1 rounded-2xl blur opacity-0 ${
-                  program.color === 'blue' ? 'bg-blue-500' :
-                  program.color === 'red' ? 'bg-red-500' : 'bg-green-500'
+                  program.color === 'blue' ? 'bg-blue-500' : 'bg-red-500'
                 }`}
                 animate={{ opacity: hoveredProgram === program.id ? 0.3 : 0 }}
                 transition={{ duration: 0.3 }}
@@ -147,9 +135,7 @@ const AnimatedPrograms = () => {
                 {/* Animated Header */}
                 <motion.div 
                   className={`h-48 relative overflow-hidden ${
-                    program.color === 'blue' ? 'bg-gradient-to-br from-blue-600 to-blue-800' :
-                    program.color === 'red' ? 'bg-gradient-to-br from-red-600 to-red-800' :
-                    'bg-gradient-to-br from-green-600 to-green-800'
+                    program.color === 'blue' ? 'bg-gradient-to-br from-blue-600 to-blue-800' : 'bg-gradient-to-br from-red-600 to-red-800'
                   }`}
                   animate={{ scale: hoveredProgram === program.id ? 1.05 : 1 }}
                   transition={{ duration: 0.3 }}
@@ -223,8 +209,7 @@ const AnimatedPrograms = () => {
                       >
                         <motion.div
                           className={`w-2 h-2 rounded-full mr-3 ${
-                            program.color === 'blue' ? 'bg-blue-500' :
-                            program.color === 'red' ? 'bg-red-500' : 'bg-green-500'
+                            program.color === 'blue' ? 'bg-blue-500' : 'bg-red-500'
                           }`}
                           animate={{ scale: [1, 1.5, 1] }}
                           transition={{ duration: 1, repeat: Infinity, delay: idx * 0.2 }}
@@ -251,13 +236,11 @@ const AnimatedPrograms = () => {
                     </div>
                     <motion.button
                       className={`px-4 py-2 rounded-lg font-medium ${
-                        program.color === 'blue' ? 'bg-blue-100 text-blue-700 hover:bg-blue-200' :
-                        program.color === 'red' ? 'bg-red-100 text-red-700 hover:bg-red-200' :
-                        'bg-green-100 text-green-700 hover:bg-green-200'
+                        program.color === 'blue' ? 'bg-blue-100 text-blue-700 hover:bg-blue-200' : 'bg-red-100 text-red-700 hover:bg-red-200'
                       } transition-colors flex items-center`}
                       whileHover={{ x: 5 }}
                     >
-                      Learn More
+                    
                       <ChevronRight className="w-4 h-4 ml-2" />
                     </motion.button>
                   </motion.div>
@@ -269,14 +252,14 @@ const AnimatedPrograms = () => {
 
         {/* Animated Features Comparison */}
         <motion.div 
-          className="bg-gradient-to-r from-blue-50 to-red-50 rounded-2xl p-8 shadow-lg"
+          className="mt-16 bg-gradient-to-r from-blue-50 to-red-50 rounded-2xl p-8 shadow-lg max-w-6xl mx-auto"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-3xl font-bold text-center mb-8 text-gradient">
-            Why Choose Our Programs?
+          <h3 className="text-3xl font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-red-600">
+            🚀 KEY FEATURES
           </h3>
           <div className="grid md:grid-cols-4 gap-6">
             {[

@@ -73,7 +73,7 @@ const VideoIntro = () => {
               className="inline-flex items-center bg-red-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition-colors"
             >
               <Youtube className="w-5 h-5 mr-2" />
-              Subscribe to Our YouTube Channel
+             <a href='https://youtube.com/@vishavsir?si=MquO3Z8zc9gba7Cv'> Subscribe to Our YouTube Channel</a>
             </a>
           </div>
         </div>
