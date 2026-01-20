@@ -80,7 +80,7 @@ const Footer = () => {
                 <Facebook className="w-5 h-5" />
               </a>
               <a 
-                href="https://instagram.com/rightclickinstitute" 
+                href="https://www.instagram.com/right_clickinstitute?igsh=M3VxbmV6aG53N24x" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 text-white rounded-full flex items-center justify-center transition-opacity"
@@ -88,7 +88,7 @@ const Footer = () => {
                 <Instagram className="w-5 h-5" />
               </a>
               <a 
-                href="https://youtube.com/@rightclickinstitute" 
+                href="https://youtube.com/@vishavsir" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-red-600 hover:bg-red-700 text-white rounded-full flex items-center justify-center transition-colors"
