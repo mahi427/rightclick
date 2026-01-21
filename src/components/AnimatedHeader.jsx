@@ -7,7 +7,7 @@ const AnimatedHeader = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -24,23 +24,26 @@ const AnimatedHeader = () => {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ type: "spring", stiffness: 100 }}
-      className={`fixed w-full z-50 ${
-        scrolled
-          ? "bg-white/90 backdrop-blur-lg shadow-xl"
-          : "bg-white shadow-lg"
-      }`}
+      transition={{ type: "spring", stiffness: 120 }}
+      className={`fixed top-0 w-full z-50 transition-all duration-300
+        bg-white/20 backdrop-blur-xl
+        border-b border-white/20
+        ${scrolled ? "shadow-xl" : ""}
+      `}
     >
-      {/* HEADER HEIGHT FIXED */}
-      <div className="max-w-7xl mx-auto px-6 h-[110px] flex items-center">
+      {/* glass highlight */}
+      <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 pointer-events-none" />
+
+      {/* HEADER CONTAINER */}
+      <div className="relative max-w-7xl mx-auto px-6 h-[110px] flex items-center">
         <div className="flex justify-between items-center w-full">
 
-          {/* LOGO SECTION */}
+          {/* LOGO */}
           <motion.div
             className="flex items-center gap-4"
             whileHover={{ scale: 1.03 }}
           >
-            <img
+           <img
               src="/images/1.jpg"
               alt="Right Click Institute"
               className="
@@ -52,35 +55,47 @@ const AnimatedHeader = () => {
               "
             />
 
-            {/* Floating Icons */}
+            {/* floating icons */}
             <motion.div
               className="hidden md:flex space-x-2"
               animate={{ rotate: [0, 360] }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
             >
               <Calculator className="w-6 h-6 text-blue-600" />
               <Brain className="w-6 h-6 text-red-600" />
-              <Award className="w-6 h-6 text-yellow-600" />
+              <Award className="w-6 h-6 text-yellow-500" />
             </motion.div>
           </motion.div>
 
           {/* DESKTOP NAV */}
-          <nav className="hidden md:flex items-center gap-4">
+          <nav className="hidden md:flex items-center gap-5">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="flex items-center gap-1 px-4 py-2 rounded-lg bg-gradient-to-r from-blue-50 to-red-50 hover:from-blue-100 hover:to-red-100 transition font-medium"
+                className="
+                  text-gray-800 font-medium
+                  px-4 py-2 rounded-full
+                  hover:bg-white/30
+                  transition
+                "
               >
-                <span>{item.icon}</span>
-                <span>{item.name}</span>
+                <span className="mr-1">{item.icon}</span>
+                {item.name}
               </a>
             ))}
 
             {/* PHONE BUTTON */}
             <a
               href="tel:9888144156"
-              className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-red-600 text-white px-6 py-3 rounded-lg font-bold whitespace-nowrap shadow-md hover:shadow-lg"
+              className="
+                flex items-center gap-2
+                bg-gradient-to-r from-blue-600 to-red-600
+                text-white px-6 py-3 rounded-full
+                font-bold whitespace-nowrap
+                shadow-md hover:shadow-xl
+                transition
+              "
             >
               <Phone className="w-5 h-5" />
               98881 44156
@@ -89,10 +104,10 @@ const AnimatedHeader = () => {
 
           {/* MOBILE MENU BUTTON */}
           <button
-            className="md:hidden w-12 h-12 rounded-lg bg-gradient-to-r from-blue-50 to-red-50"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden text-gray-800"
           >
-            {isMenuOpen ? <X /> : <Menu />}
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
@@ -104,15 +119,24 @@ const AnimatedHeader = () => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="md:hidden bg-white shadow-lg"
+            className="
+              md:hidden
+              bg-white/20 backdrop-blur-xl
+              border-t border-white/20
+            "
           >
-            <div className="p-4 space-y-3">
+            <div className="px-6 py-4 space-y-3">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="block px-4 py-2 rounded-lg bg-gray-100"
+                  className="
+                    block text-gray-800
+                    px-4 py-2 rounded-lg
+                    hover:bg-white/30
+                    transition
+                  "
                 >
                   {item.icon} {item.name}
                 </a>
@@ -120,7 +144,12 @@ const AnimatedHeader = () => {
 
               <a
                 href="tel:9888144156"
-                className="flex justify-center items-center gap-2 bg-gradient-to-r from-blue-600 to-red-600 text-white py-3 rounded-lg font-bold"
+                className="
+                  flex justify-center items-center gap-2
+                  bg-gradient-to-r from-blue-600 to-red-600
+                  text-white py-3 rounded-full
+                  font-bold
+                "
               >
                 <Phone />
                 98881 44156
@@ -130,8 +159,8 @@ const AnimatedHeader = () => {
         )}
       </AnimatePresence>
 
-      {/* GRADIENT LINE */}
-      <div className="h-1 bg-gradient-to-r from-blue-600 via-red-600 to-yellow-600" />
+      {/* bottom gradient line */}
+      <div className="h-[3px] bg-gradient-to-r from-blue-600 via-red-600 to-yellow-500" />
     </motion.header>
   );
 };

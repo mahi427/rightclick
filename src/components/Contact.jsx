@@ -15,47 +15,50 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Prepare email data
-    const subject = `Admission Inquiry - ${formData.name}`;
-    const body = `
-Student Name: ${formData.name}
-Phone: ${formData.phone}
-Email: ${formData.email}
-Class: ${formData.grade}
-Preferred Timing: ${formData.timing}
-Message: ${formData.message}
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  setSubmitMessage('');
 
----
-Sent from Right Click Institute Website
-    `;
-    
-    // Create mailto link
-    const mailtoLink = `mailto:info@rightclickinstitute.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    // Open email client
-    window.location.href = mailtoLink;
-    
-    // Reset form
-    setTimeout(() => {
+  try {
+    const response = await fetch(
+      'https://formspree.io/f/xbddznbk',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(formData)
+      }
+    );
+
+    if (response.ok) {
+      setSubmitMessage(
+        '✅ Your inquiry has been submitted successfully. We will contact you shortly.'
+      );
+
       setFormData({
         name: '',
         phone: '',
         email: '',
         grade: '',
-        message: 'I am interested in admission and would like to schedule a free demo class.',
+        message:
+          'I am interested in admission and would like to schedule a free demo class.',
         timing: ''
       });
-      setIsSubmitting(false);
-      setSubmitMessage('✅ Email client opened. Please send the email to submit your inquiry.');
-      
-      // Clear message after 5 seconds
-      setTimeout(() => setSubmitMessage(''), 5000);
-    }, 1000);
-  };
+    } else {
+      setSubmitMessage('❌ Something went wrong. Please try again.');
+    }
+  } catch (error) {
+    setSubmitMessage('❌ Network error. Please try again later.');
+  }
+
+  setIsSubmitting(false);
+
+  setTimeout(() => setSubmitMessage(''), 6000);
+};
+
 
   const handleChange = (e) => {
     setFormData({
