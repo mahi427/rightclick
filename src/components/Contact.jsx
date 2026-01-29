@@ -22,7 +22,7 @@ const Contact = () => {
 
   try {
     const response = await fetch(
-      'https://formspree.io/f/xbddznbk',
+      'https://formspree.io/f/maqjorgw',
       {
         method: 'POST',
         headers: {
@@ -223,7 +223,7 @@ const Contact = () => {
               <h4 className="font-bold text-lg mb-4">Find Us on Google Maps</h4>
               <div className="h-64 bg-gray-200 rounded-xl overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3410.7558586200964!2d75.5729!3d31.3269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5a5747a9e4ab%3A0x6b5b5c5e5d5e5d5e!2sCentral%20Town%2C%20Jalandhar%2C%20Punjab%20144001!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3408.147275427249!2d75.58200777388952!3d31.327305556658278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5af2f9947c49%3A0x8546bcd915e1c58c!2sRight%20Click%20Institute%20for%20Mathematics!5e0!3m2!1sen!2sin!4v1769704488152!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

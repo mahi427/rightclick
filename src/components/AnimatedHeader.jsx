@@ -44,7 +44,7 @@ const AnimatedHeader = () => {
             whileHover={{ scale: 1.03 }}
           >
            <img
-              src="/images/1.jpg"
+              src="/images/1.png"
               alt="Right Click Institute"
               className="
                 w-auto object-contain
