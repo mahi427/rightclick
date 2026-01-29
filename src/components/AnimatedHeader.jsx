@@ -48,7 +48,7 @@ const AnimatedHeader = () => {
               alt="Right Click Institute"
               className="
                 w-auto object-contain
-                h-[80px]
+                h-[65px]
                 sm:h-[60px]
                 md:h-[30px]
                 lg:h-[80px]
