@@ -22,7 +22,7 @@ const Contact = () => {
 
   try {
     const response = await fetch(
-      'https://formspree.io/f/maqjorgw',
+      'https://formspree.io/f/mgoyllpg',
       {
         method: 'POST',
         headers: {
