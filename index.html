@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Right Click Institute - Mathematics Coaching Center</title>
+    <title>Right Click Institute - Excellence in Mathematics</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,7 +12,7 @@
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
-    <!-- Custom configuration -->
+    <!-- Custom Tailwind Configuration -->
     <script>
       tailwind.config = {
         theme: {
@@ -21,42 +21,34 @@
               primary: '#3b82f6',
               secondary: '#1e40af',
               accent: '#f59e0b',
-              math: {
-                blue: '#3b82f6',
-                red: '#ef4444',
-                green: '#10b981',
-                purple: '#8b5cf6',
-                yellow: '#f59e0b'
-              }
+              math: '#6366f1',
+              science: '#10b981'
             },
             animation: {
               'float': 'float 6s ease-in-out infinite',
-              'pulse-slow': 'pulse 3s ease-in-out infinite',
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
               'bounce-slow': 'bounce 2s infinite',
-              'gradient': 'gradient 8s ease infinite',
-              'wave': 'wave 2s linear infinite',
+              'spin-slow': 'spin 3s linear infinite',
+              'bounce-soft': 'bounceSoft 2s infinite',
+              'wave': 'wave 3s linear infinite',
               'shimmer': 'shimmer 2s infinite',
-              'spin-slow': 'spin 4s linear infinite',
-              'ping-slow': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite',
-              'bounce-slow': 'bounce 3s infinite',
               'count-up': 'countUp 2s ease-out forwards',
-              'equation-flow': 'equationFlow 20s linear infinite',
-              'geometry-spin': 'geometrySpin 10s linear infinite',
-              'particle-float': 'particleFloat 15s linear infinite',
-              'fade-in-up': 'fadeInUp 0.8s ease-out',
+              'equation-solve': 'equationSolve 3s ease-in-out infinite',
+              'geometric-rotate': 'geometricRotate 20s linear infinite',
+              'particle-float': 'particleFloat 20s linear infinite',
               'slide-in-left': 'slideInLeft 0.8s ease-out',
               'slide-in-right': 'slideInRight 0.8s ease-out',
+              'fade-in-up': 'fadeInUp 0.8s ease-out',
               'scale-in': 'scaleIn 0.6s ease-out',
-              'rotate-in': 'rotateIn 0.8s ease-out',
             },
             keyframes: {
               float: {
-                '0%, 100%': { transform: 'translateY(0)' },
+                '0%, 100%': { transform: 'translateY(0px)' },
                 '50%': { transform: 'translateY(-20px)' },
               },
-              gradient: {
-                '0%, 100%': { backgroundPosition: '0% 50%' },
-                '50%': { backgroundPosition: '100% 50%' },
+              bounceSoft: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
               },
               wave: {
                 '0%': { transform: 'translateX(0)' },
@@ -67,67 +59,63 @@
                 '100%': { backgroundPosition: '200% center' },
               },
               countUp: {
-                '0%': { transform: 'translateY(20px)', opacity: '0' },
-                '100%': { transform: 'translateY(0)', opacity: '1' },
+                'from': { transform: 'scale(0.5)', opacity: 0 },
+                'to': { transform: 'scale(1)', opacity: 1 },
               },
-              equationFlow: {
-                '0%': { transform: 'translateX(100vw)' },
-                '100%': { transform: 'translateX(-100vw)' },
+              equationSolve: {
+                '0%': { width: '0%' },
+                '100%': { width: '100%' },
               },
-              geometrySpin: {
-                '0%': { transform: 'rotate(0deg) scale(1)' },
-                '50%': { transform: 'rotate(180deg) scale(1.2)' },
-                '100%': { transform: 'rotate(360deg) scale(1)' },
+              geometricRotate: {
+                '0%': { transform: 'rotate(0deg)' },
+                '100%': { transform: 'rotate(360deg)' },
               },
               particleFloat: {
-                '0%': { transform: 'translateY(0) rotate(0deg)' },
-                '25%': { transform: 'translateY(-100px) rotate(90deg)' },
-                '50%': { transform: 'translateY(-50px) rotate(180deg)' },
-                '75%': { transform: 'translateY(-150px) rotate(270deg)' },
-                '100%': { transform: 'translateY(0) rotate(360deg)' },
-              },
-              fadeInUp: {
-                '0%': { opacity: '0', transform: 'translateY(30px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
+                '0%': { transform: 'translate(0, 0) rotate(0deg)' },
+                '25%': { transform: 'translate(20px, -20px) rotate(90deg)' },
+                '50%': { transform: 'translate(0, -40px) rotate(180deg)' },
+                '75%': { transform: 'translate(-20px, -20px) rotate(270deg)' },
+                '100%': { transform: 'translate(0, 0) rotate(360deg)' },
               },
               slideInLeft: {
-                '0%': { opacity: '0', transform: 'translateX(-50px)' },
-                '100%': { opacity: '1', transform: 'translateX(0)' },
+                'from': { transform: 'translateX(-100px)', opacity: 0 },
+                'to': { transform: 'translateX(0)', opacity: 1 },
               },
               slideInRight: {
-                '0%': { opacity: '0', transform: 'translateX(50px)' },
-                '100%': { opacity: '1', transform: 'translateX(0)' },
+                'from': { transform: 'translateX(100px)', opacity: 0 },
+                'to': { transform: 'translateX(0)', opacity: 1 },
+              },
+              fadeInUp: {
+                'from': { transform: 'translateY(50px)', opacity: 0 },
+                'to': { transform: 'translateY(0)', opacity: 1 },
               },
               scaleIn: {
-                '0%': { opacity: '0', transform: 'scale(0.8)' },
-                '100%': { opacity: '1', transform: 'scale(1)' },
+                'from': { transform: 'scale(0.8)', opacity: 0 },
+                'to': { transform: 'scale(1)', opacity: 1 },
               },
-              rotateIn: {
-                '0%': { opacity: '0', transform: 'rotate(-180deg) scale(0)' },
-                '100%': { opacity: '1', transform: 'rotate(0) scale(1)' },
-              }
+            },
+            backgroundImage: {
+              'math-pattern': "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%233b82f6' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+              'equation-pattern': "url(\"data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='20' y='30' font-family='monospace' font-size='14' fill='%233b82f6' opacity='0.1'%3Ex² + y² = r²%3C/text%3E%3Ctext x='120' y='60' font-family='monospace' font-size='14' fill='%23dc2626' opacity='0.1'%3Eπr²%3C/text%3E%3Ctext x='40' y='100' font-family='monospace' font-size='14' fill='%2310b981' opacity='0.1'%3Ea² + b² = c²%3C/text%3E%3Ctext x='140' y='130' font-family='monospace' font-size='14' fill='%23f59e0b' opacity='0.1'%3Ee=mc²%3C/text%3E%3C/svg%3E\")",
             }
           }
         }
       }
     </script>
     
-    <!-- Inter Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Carousel CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    
-    <!-- MathJax for mathematical equations -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
       * {
         font-family: 'Inter', sans-serif;
+      }
+      
+      .mono-font {
+        font-family: 'JetBrains Mono', monospace;
       }
       
       html {
@@ -136,300 +124,178 @@
       
       /* Custom Scrollbar */
       ::-webkit-scrollbar {
-        width: 12px;
+        width: 10px;
       }
       ::-webkit-scrollbar-track {
-        background: linear-gradient(180deg, #f1f1f1 0%, #e5e5e5 100%);
+        background: #f1f1f1;
       }
       ::-webkit-scrollbar-thumb {
-        background: linear-gradient(45deg, #3b82f6, #ef4444, #f59e0b);
-        border-radius: 6px;
-        border: 3px solid #f1f1f1;
+        background: linear-gradient(45deg, #3b82f6, #dc2626);
+        border-radius: 5px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(45deg, #1d4ed8, #dc2626, #d97706);
+        background: linear-gradient(45deg, #1e40af, #b91c1c);
       }
       
-      /* Animated Background with Mathematical Symbols */
-      .math-bg {
-        background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 30 Q75 20 100 30 T150 30' stroke='%233b82f6' stroke-width='1' fill='none' opacity='0.1'/%3E%3Ccircle cx='40' cy='80' r='5' fill='%23ef4444' opacity='0.1'/%3E%3Ccircle cx='160' cy='120' r='8' fill='%2310b981' opacity='0.1'/%3E%3Cpath d='M30 150 L50 130 L70 150' stroke='%23f59e0b' stroke-width='2' fill='none' opacity='0.1'/%3E%3Cpath d='M130 50 L150 30 L170 50' stroke='%238b5cf6' stroke-width='2' fill='none' opacity='0.1'/%3E%3Ctext x='100' y='180' font-size='20' text-anchor='middle' fill='%233b82f6' opacity='0.1'%3Eπ%3C/text%3E%3Ctext x='180' y='180' font-size='20' text-anchor='middle' fill='%23ef4444' opacity='0.1'%3E∞%3C/text%3E%3Ctext x='20' y='20' font-size='20' text-anchor='middle' fill='%2310b981' opacity='0.1'%3E∑%3C/text%3E%3C/svg%3E");
-        background-size: 400px;
-        animation: mathPattern 20s linear infinite;
+      /* Parallax Layers */
+      .parallax-layer {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        pointer-events: none;
       }
       
-      @keyframes mathPattern {
-        0% { background-position: 0 0; }
-        100% { background-position: 400px 400px; }
-      }
-      
-      /* Glassmorphism Effect */
-      .glass {
-        background: rgba(255, 255, 255, 0.25);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.18);
-      }
-      
-      /* Text Gradient */
-      .text-gradient {
-        background: linear-gradient(45deg, #3b82f6, #ef4444, #f59e0b, #10b981, #8b5cf6);
+      /* Math Equation Text */
+      .math-text {
+        background: linear-gradient(45deg, #3b82f6, #dc2626, #f59e0b, #10b981);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
         background-size: 300% 300%;
-        animation: gradient 8s ease infinite;
+        animation: gradientShift 8s ease infinite;
       }
       
-      /* Floating Equations Animation */
+      @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      
+      /* Glowing Elements */
+      .glow {
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+      }
+      
+      .glow-red {
+        box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+      }
+      
+      .glow-yellow {
+        box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+      }
+      
+      /* Floating Equations */
       .floating-equation {
-        position: fixed;
-        pointer-events: none;
-        z-index: -1;
+        position: absolute;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 18px;
         opacity: 0.1;
-        font-size: 24px;
-        font-weight: bold;
-        color: #3b82f6;
-        animation: equationFlow 20s linear infinite;
+        z-index: -1;
+        pointer-events: none;
       }
       
-      /* Geometric Shapes */
-      .geometry-shape {
-        position: absolute;
-        opacity: 0.1;
-        z-index: -1;
+      /* 3D Card Effect */
+      .card-3d {
+        transform-style: preserve-3d;
+        perspective: 1000px;
+      }
+      
+      .card-3d:hover {
+        transform: rotateY(5deg) rotateX(5deg);
       }
       
       /* Particle System */
       .particle {
         position: absolute;
         border-radius: 50%;
-        background: linear-gradient(45deg, #3b82f6, #ef4444);
-        opacity: 0.3;
-        filter: blur(2px);
         pointer-events: none;
         z-index: -1;
       }
       
-      /* Swiper Customization */
-      .swiper-pagination-bullet {
-        background: #3b82f6 !important;
-        width: 12px !important;
-        height: 12px !important;
-        opacity: 0.5;
-      }
-      .swiper-pagination-bullet-active {
-        opacity: 1;
-        background: linear-gradient(45deg, #3b82f6, #ef4444) !important;
-        transform: scale(1.2);
-      }
-      .swiper-button-next, .swiper-button-prev {
-        color: #3b82f6 !important;
-        background: rgba(255, 255, 255, 0.8);
-        width: 50px !important;
-        height: 50px !important;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .swiper-button-next:after, .swiper-button-prev:after {
-        font-size: 20px !important;
-      }
-      
       /* Loading Animation */
       .math-loader {
-        display: inline-block;
-        position: relative;
-        width: 80px;
-        height: 80px;
-      }
-      .math-loader div {
-        position: absolute;
-        width: 16px;
-        height: 16px;
+        width: 50px;
+        height: 50px;
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #3b82f6;
+        border-right: 3px solid #dc2626;
         border-radius: 50%;
-        background: #3b82f6;
-        animation: mathLoader 1.2s linear infinite;
-      }
-      .math-loader div:nth-child(1) {
-        animation-delay: 0s;
-        top: 8px;
-        left: 8px;
-      }
-      .math-loader div:nth-child(2) {
-        animation-delay: -0.4s;
-        top: 8px;
-        left: 32px;
-      }
-      .math-loader div:nth-child(3) {
-        animation-delay: -0.8s;
-        top: 8px;
-        left: 56px;
-      }
-      .math-loader div:nth-child(4) {
-        animation-delay: -0.4s;
-        top: 32px;
-        left: 8px;
-      }
-      .math-loader div:nth-child(5) {
-        animation-delay: -0.8s;
-        top: 32px;
-        left: 32px;
-      }
-      .math-loader div:nth-child(6) {
-        animation-delay: -1.2s;
-        top: 32px;
-        left: 56px;
-      }
-      .math-loader div:nth-child(7) {
-        animation-delay: -0.8s;
-        top: 56px;
-        left: 8px;
-      }
-      .math-loader div:nth-child(8) {
-        animation-delay: -1.2s;
-        top: 56px;
-        left: 32px;
-      }
-      .math-loader div:nth-child(9) {
-        animation-delay: -1.6s;
-        top: 56px;
-        left: 56px;
+        animation: spin 1s linear infinite;
       }
       
-      @keyframes mathLoader {
-        0%, 100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.5;
-        }
-      }
-      
-      /* Animated Graph */
-      .animated-graph {
-        position: relative;
-        width: 100%;
-        height: 200px;
-        overflow: hidden;
-      }
-      .graph-line {
-        stroke-dasharray: 1000;
-        stroke-dashoffset: 1000;
-        animation: drawGraph 3s ease-in-out forwards;
-      }
-      
-      @keyframes drawGraph {
-        to {
-          stroke-dashoffset: 0;
-        }
-      }
-      
-      /* Quote Animation */
-      .quote-slide {
-        animation: quoteSlide 20s linear infinite;
-      }
-      
-      @keyframes quoteSlide {
-        0% { transform: translateX(100%); }
-        100% { transform: translateX(-100%); }
-      }
-      
-      /* CTA Pulse Animation */
-      .cta-pulse {
-        animation: ctaPulse 2s infinite;
-      }
-      
-      @keyframes ctaPulse {
-        0% {
-          box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
-        }
-        70% {
-          box-shadow: 0 0 0 20px rgba(59, 130, 246, 0);
-        }
-        100% {
-          box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
-        }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
       }
     </style>
   </head>
-  <body class="bg-gradient-to-br from-blue-50 via-white to-red-50 overflow-x-hidden">
-    <!-- Floating Mathematical Equations -->
-    <div class="floating-equation" style="top: 10%; left: 5%; animation-delay: 0s;">E=mc²</div>
-    <div class="floating-equation" style="top: 20%; right: 10%; animation-delay: 5s;">π = 3.14159</div>
-    <div class="floating-equation" style="top: 40%; left: 15%; animation-delay: 10s;">a²+b²=c²</div>
-    <div class="floating-equation" style="bottom: 30%; right: 20%; animation-delay: 15s;">∑</div>
+  <body class="bg-gradient-to-b from-gray-50 via-white to-blue-50 overflow-x-hidden">
+    <!-- Parallax Background Layers -->
+    <div class="parallax-layer" style="z-index: -3;">
+      <div class="absolute inset-0 bg-math-pattern opacity-5"></div>
+    </div>
     
-    <!-- Geometric Shapes -->
-    <div class="geometry-shape w-64 h-64 top-10 left-10 animate-geometry-spin" style="background: conic-gradient(#3b82f6, #ef4444, #f59e0b, #10b981, #8b5cf6); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;"></div>
-    <div class="geometry-shape w-48 h-48 bottom-20 right-10 animate-float" style="background: linear-gradient(45deg, #ef4444, #f59e0b); border-radius: 50%; animation-delay: -3s;"></div>
-    <div class="geometry-shape w-32 h-32 top-1/3 right-1/4" style="background: linear-gradient(45deg, #10b981, #8b5cf6); clip-path: polygon(50% 0%, 0% 100%, 100% 100%); animation: geometrySpin 8s linear infinite reverse;"></div>
+    <div class="parallax-layer" style="z-index: -2;">
+      <div class="absolute inset-0 bg-equation-pattern opacity-3"></div>
+    </div>
+    
+    <!-- Floating Equations -->
+    <div class="floating-equation" style="top: 10%; left: 5%;">x² + y² = r²</div>
+    <div class="floating-equation" style="top: 20%; right: 10%;">πr²</div>
+    <div class="floating-equation" style="bottom: 30%; left: 15%;">a² + b² = c²</div>
+    <div class="floating-equation" style="bottom: 20%; right: 5%;">e=mc²</div>
+    <div class="floating-equation" style="top: 40%; left: 20%;">∫f(x)dx</div>
+    <div class="floating-equation" style="top: 60%; right: 20%;">∑x/n</div>
     
     <div id="root"></div>
     
-    <!-- Scripts -->
-<script type="module" src="./src/main.jsx"></script>
-    <!-- AOS Library -->
+    <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Carousel JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    
     <script>
-      // Initialize AOS
+      AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100,
+        delay: 100
+      });
+    </script>
+    
+    <!-- Parallax Script -->
+    <script>
       document.addEventListener('DOMContentLoaded', function() {
-        AOS.init({
-          duration: 800,
-          once: true,
-          offset: 100
-        });
-        
         // Create floating particles
-        const container = document.body;
-        for (let i = 0; i < 30; i++) {
+        createParticles(30);
+        
+        // Parallax effect
+        window.addEventListener('scroll', function() {
+          const scrolled = window.pageYOffset;
+          const parallaxLayers = document.querySelectorAll('.parallax-layer');
+          
+          parallaxLayers.forEach((layer, index) => {
+            const speed = 0.3 + (index * 0.1);
+            const yPos = -(scrolled * speed);
+            layer.style.transform = `translateY(${yPos}px)`;
+          });
+        });
+      });
+      
+      function createParticles(count) {
+        const colors = ['#3b82f6', '#dc2626', '#f59e0b', '#10b981', '#8b5cf6'];
+        for (let i = 0; i < count; i++) {
           const particle = document.createElement('div');
           particle.className = 'particle';
-          const size = Math.random() * 25 + 5;
-          const color = ['#3b82f6', '#ef4444', '#f59e0b', '#10b981', '#8b5cf6'][Math.floor(Math.random() * 5)];
+          const size = Math.random() * 15 + 5;
+          const color = colors[Math.floor(Math.random() * colors.length)];
           
           particle.style.width = `${size}px`;
           particle.style.height = `${size}px`;
           particle.style.left = `${Math.random() * 100}vw`;
           particle.style.top = `${Math.random() * 100}vh`;
-          particle.style.background = `radial-gradient(circle, ${color}, transparent)`;
-          particle.style.animation = `particleFloat ${Math.random() * 20 + 10}s linear infinite`;
-          particle.style.animationDelay = `${Math.random() * 5}s`;
-          container.appendChild(particle);
+          particle.style.background = `radial-gradient(circle, ${color}40, ${color}20)`;
+          particle.style.filter = 'blur(2px)';
+          
+          // Random animation
+          const duration = Math.random() * 20 + 10;
+          particle.style.animation = `particle-float ${duration}s linear infinite`;
+          
+          document.body.appendChild(particle);
         }
-        
-        // Animated Counter for Stats
-        const counters = document.querySelectorAll('.counter');
-        counters.forEach(counter => {
-          const target = +counter.getAttribute('data-target');
-          const increment = target / 200;
-          let current = 0;
-          
-          const updateCounter = () => {
-            if (current < target) {
-              current += increment;
-              counter.innerText = Math.ceil(current);
-              setTimeout(updateCounter, 10);
-            } else {
-              counter.innerText = target.toLocaleString();
-            }
-          };
-          
-          const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                updateCounter();
-                observer.unobserve(entry.target);
-              }
-            });
-          });
-          
-          observer.observe(counter);
-        });
-      });
+      }
     </script>
+    
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
