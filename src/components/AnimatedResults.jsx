@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Trophy, Star, Award, TrendingUp, BarChart, Target, Sparkles } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
+import { Helmet } from "react-helmet-async";
+
+<Helmet>
+  <link rel="canonical" href="https://rightclickinstitute.in/" />
+</Helmet>
 
 const AnimatedResults = () => {
   const [ref, inView] = useInView({

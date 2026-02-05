@@ -1,5 +1,10 @@
 import React from 'react';
 import { History, Target, Eye, MapPin } from 'lucide-react';
+import { Helmet } from "react-helmet-async";
+
+<Helmet>
+  <link rel="canonical" href="https://rightclickinstitute.in/" />
+</Helmet>
 
 const About = () => {
   const teamMembers = [

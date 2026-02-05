@@ -1,5 +1,10 @@
 import React from 'react';
 import { Download, FileText, Book, Calculator, Brain, Clock } from 'lucide-react';
+import { Helmet } from "react-helmet-async";
+
+<Helmet>
+  <link rel="canonical" href="https://rightclickinstitute.in/" />
+</Helmet>
 
 const Resources = () => {
   const tips = [

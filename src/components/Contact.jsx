@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { Phone, MapPin, Clock, Send, User, GraduationCap, Mail, Facebook, Instagram, Youtube } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Helmet } from "react-helmet-async";
+
+<Helmet>
+  <link rel="canonical" href="https://rightclickinstitute.in/" />
+</Helmet>
 
 const Contact = () => {
   const [formData, setFormData] = useState({

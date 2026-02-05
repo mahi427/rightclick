@@ -1,4 +1,8 @@
 /* Remove all Tailwind directives since we're using CDN */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
   padding: 0;

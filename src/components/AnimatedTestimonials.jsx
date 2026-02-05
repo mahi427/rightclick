@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, Quote, ChevronLeft, ChevronRight, User, GraduationCap, Award } from 'lucide-react';
+import { Helmet } from "react-helmet-async";
+
+<Helmet>
+  <link rel="canonical" href="https://rightclickinstitute.in/" />
+</Helmet>
 
 const AnimatedTestimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

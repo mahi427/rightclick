@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Phone, Menu, X, Calculator, Brain, Award } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Helmet } from "react-helmet-async";
+
+<Helmet>
+  <link rel="canonical" href="https://rightclickinstitute.in/" />
+</Helmet>
+
+const HEADER_HEIGHT = 110;
 
 const AnimatedHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,12 +19,27 @@ const AnimatedHeader = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // smooth scroll with offset
+  const handleAnchorClick = (e, targetId) => {
+    e.preventDefault();
+    const target = document.getElementById(targetId);
+    if (!target) return;
+
+    const y =
+      target.getBoundingClientRect().top +
+      window.pageYOffset -
+      HEADER_HEIGHT;
+
+    window.scrollTo({ top: y, behavior: "smooth" });
+    setIsMenuOpen(false);
+  };
+
   const navItems = [
-    { name: "Home", href: "#home", icon: "🏠" },
-    { name: "Programs", href: "#programs", icon: "📚" },
-    { name: "Results", href: "#results", icon: "🏆" },
-    { name: "Testimonials", href: "#testimonials", icon: "⭐" },
-    { name: "Contact", href: "#contact", icon: "📞" },
+    { name: "Home", id: "home", icon: "🏠" },
+    { name: "Programs", id: "programs", icon: "📚" },
+    { name: "Results", id: "results", icon: "🏆" },
+    { name: "Testimonials", id: "testimonials", icon: "⭐" },
+    { name: "Contact", id: "contact", icon: "📞" },
   ];
 
   return (
@@ -40,22 +62,16 @@ const AnimatedHeader = () => {
 
           {/* LOGO */}
           <motion.div
-            className="flex items-center gap-4"
+            className="flex items-center gap-4 cursor-pointer"
             whileHover={{ scale: 1.03 }}
+            onClick={(e) => handleAnchorClick(e, "home")}
           >
-           <img
+            <img
               src="/images/1.png"
               alt="Right Click Institute"
-              className="
-                w-auto object-contain
-                h-[65px]
-                sm:h-[60px]
-                md:h-[30px]
-                lg:h-[80px]
-              "
+              className="w-auto object-contain h-[65px] sm:h-[60px] md:h-[30px] lg:h-[80px]"
             />
 
-            {/* floating icons */}
             <motion.div
               className="hidden md:flex space-x-2"
               animate={{ rotate: [0, 360] }}
@@ -72,7 +88,8 @@ const AnimatedHeader = () => {
             {navItems.map((item) => (
               <a
                 key={item.name}
-                href={item.href}
+                href={`#${item.id}`}
+                onClick={(e) => handleAnchorClick(e, item.id)}
                 className="
                   text-gray-800 font-medium
                   px-4 py-2 rounded-full
@@ -85,14 +102,13 @@ const AnimatedHeader = () => {
               </a>
             ))}
 
-            {/* PHONE BUTTON */}
             <a
               href="tel:9888144156"
               className="
                 flex items-center gap-2
                 bg-gradient-to-r from-blue-600 to-red-600
                 text-white px-6 py-3 rounded-full
-                font-bold whitespace-nowrap
+                font-bold
                 shadow-md hover:shadow-xl
                 transition
               "
@@ -119,24 +135,15 @@ const AnimatedHeader = () => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="
-              md:hidden
-              bg-white/20 backdrop-blur-xl
-              border-t border-white/20
-            "
+            className="md:hidden bg-white/20 backdrop-blur-xl border-t border-white/20"
           >
             <div className="px-6 py-4 space-y-3">
               {navItems.map((item) => (
                 <a
                   key={item.name}
-                  href={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="
-                    block text-gray-800
-                    px-4 py-2 rounded-lg
-                    hover:bg-white/30
-                    transition
-                  "
+                  href={`#${item.id}`}
+                  onClick={(e) => handleAnchorClick(e, item.id)}
+                  className="block text-gray-800 px-4 py-2 rounded-lg hover:bg-white/30 transition"
                 >
                   {item.icon} {item.name}
                 </a>
@@ -144,12 +151,7 @@ const AnimatedHeader = () => {
 
               <a
                 href="tel:9888144156"
-                className="
-                  flex justify-center items-center gap-2
-                  bg-gradient-to-r from-blue-600 to-red-600
-                  text-white py-3 rounded-full
-                  font-bold
-                "
+                className="flex justify-center items-center gap-2 bg-gradient-to-r from-blue-600 to-red-600 text-white py-3 rounded-full font-bold"
               >
                 <Phone />
                 98881 44156
@@ -159,7 +161,6 @@ const AnimatedHeader = () => {
         )}
       </AnimatePresence>
 
-      {/* bottom gradient line */}
       <div className="h-[3px] bg-gradient-to-r from-blue-600 via-red-600 to-yellow-500" />
     </motion.header>
   );

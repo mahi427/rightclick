@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, ChevronUp, HelpCircle, CheckCircle, XCircle, RefreshCw } from 'lucide-react';
+import { Helmet } from "react-helmet-async";
+
+<Helmet>
+  <link rel="canonical" href="https://rightclickinstitute.in/" />
+</Helmet>
 
 const InteractiveElements = () => {
   const [activeProblem, setActiveProblem] = useState(null);

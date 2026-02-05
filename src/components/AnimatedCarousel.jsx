@@ -1,6 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Star, Trophy, Users, Target } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Helmet } from "react-helmet-async";
+
+<Helmet>
+  <link rel="canonical" href="https://rightclickinstitute.in/" />
+</Helmet>
 
 const AnimatedCarousel = () => {
   const swiperRef = useRef(null);

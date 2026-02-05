@@ -1,5 +1,9 @@
 import React, { useEffect, useRef } from 'react';
+import { Helmet } from "react-helmet-async";
 
+<Helmet>
+  <link rel="canonical" href="https://rightclickinstitute.in/" />
+</Helmet>
 const ParallaxBackground = () => {
   const layersRef = useRef([]);
   const symbolsRef = useRef([]);
