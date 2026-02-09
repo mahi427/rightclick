@@ -11,50 +11,95 @@ import About from "./components/About";
 import LoadingAnimation from "./components/LoadingAnimation";
 
 
+
+// function App() {
+//   return (
+//     <div className="min-h-screen overflow-x-hidden">
+
+//       <LoadingAnimation />
+//       <AnimatedHeader />
+
+//       {/* HOME */}
+//       <section id="home">
+//         <AnimatedHero />
+//         <AnimatedCarousel />
+//       </section>
+
+//       {/* ABOUT */}
+//       <section id="about">
+//         <About />
+//       </section>
+
+//       {/* PROGRAMS */}
+//       <section id="programs">
+//         <AnimatedPrograms />
+//       </section>
+
+//       {/* RESULTS */}
+//       <section id="results">
+//         <Results />
+//       </section>
+
+//       {/* TESTIMONIALS */}
+//       <section id="testimonials">
+//         <Testimonials />
+//       </section>
+
+//       {/* VIDEO */}
+//       <VideoIntro />
+
+//       {/* CONTACT */}
+//       <section id="contact">
+//         <Contact />
+//       </section>
+
+//       <Footer />
+//     </div>
+//   );
+// }
+
+// export default App;
+
+import { Helmet } from "react-helmet-async";
+
 function App() {
   return (
-    <div className="min-h-screen overflow-x-hidden">
+    <>
+      <Helmet>
+        <title>Right Click Institute | Best Maths Coaching in Jalandhar</title>
 
+        <meta
+          name="description"
+          content="Right Click Institute provides the best mathematics coaching for classes 6th–12th in Central Town, Jalandhar."
+        />
+
+        <link
+          rel="canonical"
+          href="https://rightclickinstitute.in/"
+        />
+      </Helmet>
+
+      {/* Full Website Sections */}
       <LoadingAnimation />
       <AnimatedHeader />
+      <AnimatedHero />
 
-      {/* HOME */}
-      <section id="home">
-        <AnimatedHero />
-        <AnimatedCarousel />
-      </section>
-
-      {/* ABOUT */}
       <section id="about">
         <About />
       </section>
 
-      {/* PROGRAMS */}
       <section id="programs">
         <AnimatedPrograms />
       </section>
 
-      {/* RESULTS */}
-      <section id="results">
-        <Results />
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section id="testimonials">
-        <Testimonials />
-      </section>
-
-      {/* VIDEO */}
-      <VideoIntro />
-
-      {/* CONTACT */}
       <section id="contact">
         <Contact />
       </section>
 
       <Footer />
-    </div>
+    </>
   );
 }
 
 export default App;
+
