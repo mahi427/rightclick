@@ -1,58 +1,66 @@
+import React from "react";
+
+import LoadingAnimation from "./components/LoadingAnimation";
 import AnimatedHeader from "./components/AnimatedHeader";
 import AnimatedHero from "./components/AnimatedHero";
 import AnimatedCarousel from "./components/AnimatedCarousel";
+import About from "./components/About";
 import AnimatedPrograms from "./components/AnimatedPrograms";
 import Results from "./components/Results";
 import Testimonials from "./components/Testimonials";
 import VideoIntro from "./components/VideoIntro";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import About from "./components/About";
-import LoadingAnimation from "./components/LoadingAnimation";
-
 
 function App() {
   return (
     <div className="min-h-screen overflow-x-hidden">
 
+      {/* 1. Loading */}
       <LoadingAnimation />
+
+      {/* 2. Header */}
       <AnimatedHeader />
 
-      {/* HOME */}
+      {/* 3. Hero */}
       <section id="home">
         <AnimatedHero />
-        <AnimatedCarousel />
       </section>
 
-      {/* ABOUT */}
+      {/* 4. Carousel */}
+      <AnimatedCarousel />
+
+      {/* 5. About */}
       <section id="about">
         <About />
       </section>
 
-      {/* PROGRAMS */}
+      {/* 6. Programs */}
       <section id="programs">
         <AnimatedPrograms />
       </section>
 
-      {/* RESULTS */}
+      {/* 7. Results */}
       <section id="results">
         <Results />
       </section>
 
-      {/* TESTIMONIALS */}
+      {/* 8. Testimonials */}
       <section id="testimonials">
         <Testimonials />
       </section>
 
-      {/* VIDEO */}
+      {/* 9. Video */}
       <VideoIntro />
 
-      {/* CONTACT */}
+      {/* 10. Contact */}
       <section id="contact">
         <Contact />
       </section>
 
+      {/* 11. Footer */}
       <Footer />
+
     </div>
   );
 }
