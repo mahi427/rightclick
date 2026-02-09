@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Phone, Menu, X, Calculator, Brain, Award } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-
 const HEADER_HEIGHT = 110;
 
 const AnimatedHeader = () => {

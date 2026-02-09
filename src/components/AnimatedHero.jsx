@@ -100,11 +100,12 @@ const AnimatedHero = () => {
             </div>
             
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
-              <span className="text-gradient bg-gradient-to-r from-blue-600 via-red-600 to-yellow-600">
-                RIGHT CLICK
+              <span className="text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-red-500 to-yellow-500">
+  RIGHT CLICK
               </span>
+              
               <br />
-              <span className="text-3xl md:text-5xl lg:text-6xl text-gray-700 mt-4 block">
+              <span className="text-3xl md:text-5xl lg:text-5xl text-gray-700 mt-4 block">
                 INSTITUTE FOR MATHEMATICS
               </span>
             </h1>

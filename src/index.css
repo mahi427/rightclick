@@ -1,10 +1,7 @@
-/* Remove all Tailwind directives since we're using CDN */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+  font-family: "Inter", sans-serif;
 }
