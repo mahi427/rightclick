@@ -1,10 +1,6 @@
 import React from 'react';
 import { Trophy, Star, Users, Target, Award } from 'lucide-react';
-import { Helmet } from "react-helmet-async";
 
-<Helmet>
-  <link rel="canonical" href="https://rightclickinstitute.in/" />
-</Helmet>
 const Results = () => {
   const scores = [
     { marks: '100/100', count: 12 },

@@ -1,10 +1,6 @@
 import React from 'react';
 import { ChevronLeft, ChevronRight, MapPin, Phone, Star, Users, Award } from 'lucide-react';
-import { Helmet } from "react-helmet-async";
 
-<Helmet>
-  <link rel="canonical" href="https://rightclickinstitute.in/" />
-</Helmet>
 
 const ImageCarousel = () => {
   const [currentSlide, setCurrentSlide] = React.useState(0);

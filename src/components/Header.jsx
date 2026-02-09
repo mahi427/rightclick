@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, Menu, X } from 'lucide-react';
-import { Helmet } from "react-helmet-async";
 
-<Helmet>
-  <link rel="canonical" href="https://rightclickinstitute.in/" />
-</Helmet>
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

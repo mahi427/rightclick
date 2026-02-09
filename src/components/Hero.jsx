@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Target, Users, Award, Calendar, Brain } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Helmet } from "react-helmet-async";
-<Helmet>
-  <link rel="canonical" href="https://rightclickinstitute.in/" />
-</Helmet>
+
 
 
 const Hero = () => {

@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Phone, Menu, X, Calculator, Brain, Award } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Helmet } from "react-helmet-async";
 
-<Helmet>
-  <link rel="canonical" href="https://rightclickinstitute.in/" />
-</Helmet>
 
 const HEADER_HEIGHT = 110;
 

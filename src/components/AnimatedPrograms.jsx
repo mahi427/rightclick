@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen, Target, Award, Brain, Clock, Users, Zap, Sparkles, ChevronRight } from 'lucide-react';
-import { Helmet } from "react-helmet-async";
 
-<Helmet>
-  <link rel="canonical" href="https://rightclickinstitute.in/" />
-</Helmet>
 
 const AnimatedPrograms = () => {
   const [hoveredProgram, setHoveredProgram] = useState(null);

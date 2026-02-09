@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calculator, Brain, Trophy, Users, Target, Sparkles, Zap } from 'lucide-react';
-import { Helmet } from "react-helmet-async";
 
-<Helmet>
-  <link rel="canonical" href="https://rightclickinstitute.in/" />
-</Helmet>
 
 const AnimatedHero = () => {
   const [counters, setCounters] = useState({

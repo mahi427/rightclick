@@ -1,10 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Helmet } from "react-helmet-async";
 
-<Helmet>
-  <link rel="canonical" href="https://rightclickinstitute.in/" />
-</Helmet>
 
 const AnimatedCard = ({ children, className = "", delay = 0, hoverScale = 1.05, tapScale = 0.98 }) => {
   return (

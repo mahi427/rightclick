@@ -1,10 +1,5 @@
 import React from 'react';
 import { Phone, MapPin, Clock, Mail, Facebook, Instagram, Youtube } from 'lucide-react';
-import { Helmet } from "react-helmet-async";
-
-<Helmet>
-  <link rel="canonical" href="https://rightclickinstitute.in/" />
-</Helmet>
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
