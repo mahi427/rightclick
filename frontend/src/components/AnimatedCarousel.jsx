@@ -14,9 +14,10 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 const AnimatedCarousel = () => {
   const slides = [
     "/images/classroom/class1.jpeg",
+    "/images/classroom/class5.jpeg",
     "/images/classroom/class2.jpeg",
     "/images/classroom/class3.jpeg",
-    "/images/classroom/class4.jpeg",
+    "/images/classroom/class6.jpeg",
   ];
 
   return (
