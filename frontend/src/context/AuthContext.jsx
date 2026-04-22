@@ -1,6 +1,8 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
-import api from "../services/api"; // FIXED: changed from "./services/api" to "../services/api"
-import toast from "react-hot-toast";
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { auth } from '../firebase/config';
+import { onAuthStateChanged } from 'firebase/auth';
+import { getUserProfile, loginUser, logoutUser, registerUser } from '../services/api';
+import toast from 'react-hot-toast';
 
 const AuthContext = createContext(null);
 
@@ -13,64 +15,73 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [userProfile, setUserProfile] = useState(null);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) loadUser();
-    else setLoading(false);
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      if (firebaseUser) {
+        setUser(firebaseUser);
+        localStorage.setItem('userId', firebaseUser.uid);
+        const profile = await getUserProfile(firebaseUser.uid);
+        if (profile.success) {
+          setUserProfile(profile.data);
+        }
+      } else {
+        setUser(null);
+        setUserProfile(null);
+        localStorage.removeItem('userId');
+      }
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
   }, []);
 
-  const loadUser = async () => {
-    try {
-      const response = await api.get('/auth/profile');
-      setUser(response.data);
-      localStorage.setItem('user', JSON.stringify(response.data));
-    } catch {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const register = async (userData) => {
-    const response = await api.post('/auth/register', userData);
-    const { token, ...userData_ } = response.data;
-    localStorage.setItem('token', token);
-    localStorage.setItem('user', JSON.stringify(userData_));
-    setUser(userData_);
-    toast.success(`Welcome, ${userData_.name}!`);
-    return userData_;
+    const result = await registerUser(
+      userData.email,
+      userData.password,
+      userData.name,
+      userData.studentClass
+    );
+    
+    if (result.success) {
+      toast.success(`Welcome, ${userData.name}!`);
+      return result.user;
+    }
+    toast.error(result.error);
+    throw new Error(result.error);
   };
 
   const login = async (email, password) => {
-    const response = await api.post('/auth/login', { email, password });
-    const { token, ...userData } = response.data;
-    localStorage.setItem('token', token);
-    localStorage.setItem('user', JSON.stringify(userData));
-    setUser(userData);
-    toast.success(`Welcome back, ${userData.name}!`);
-    return userData;
+    const result = await loginUser(email, password);
+    if (result.success) {
+      toast.success(`Welcome back, ${result.user.name || 'Student'}!`);
+      return result.user;
+    }
+    toast.error(result.error);
+    throw new Error(result.error);
   };
 
-  const logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    setUser(null);
+  const logout = async () => {
+    await logoutUser();
     toast.success('Logged out successfully');
   };
 
+  const value = {
+    user,
+    userProfile,
+    loading,
+    register,
+    login,
+    logout,
+    isAuthenticated: !!user,
+    userName: user?.displayName || userProfile?.name || 'Student',
+    userClass: userProfile?.class || null
+  };
+
   return (
-    <AuthContext.Provider value={{
-      user,
-      loading,
-      register,
-      login,
-      logout,
-      isAuthenticated: !!user,
-      userName: user?.name || 'Student',
-      userClass: user?.class || null
-    }}>
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );
