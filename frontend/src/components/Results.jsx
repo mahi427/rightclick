@@ -3,18 +3,18 @@ import { Trophy, Star, Users, Target, Award } from 'lucide-react';
 
 const Results = () => {
   const scores = [
-    { marks: '100/100', count: 12 },
-    { marks: '99/100', count: 8 },
-    { marks: '98/100', count: 6 },
-    { marks: '97/100', count: 5 },
-    { marks: '96/100', count: 4 },
-    { marks: '95/100', count: 3 },
-    { marks: '94/100', count: 2 },
-    { marks: '93/100', count: 2 },
-    { marks: '92/100', count: 2 },
-    { marks: '91/100', count: 1 },
-    { marks: '90/100', count: 1 },
-    { marks: '89/100', count: 1 },
+    { marks: '100/100', count: 45 },
+    { marks: '99/100', count: 158 },
+    { marks: '98/100', count: 134 },
+    { marks: '97/100', count: 166 },
+    { marks: '96/100', count: 216 },
+    { marks: '95/100', count: 340 },
+    { marks: '94/100', count: 250 },
+    { marks: '93/100', count: 340 },
+    { marks: '92/100', count: 250 },
+    { marks: '91/100', count: 150 },
+    { marks: '90/100', count: 189 },
+    { marks: '89/100', count: 287},
   ];
 
   return (
@@ -24,7 +24,7 @@ const Results = () => {
           <div className="flex items-center justify-center mb-4">
             <Trophy className="w-10 h-10 text-yellow-500 mr-3" />
             <h2 className="text-4xl font-bold text-gray-900">
-              TOPPER STUDENTS 2024-25
+              TOPPER STUDENTS 
             </h2>
           </div>
           <p className="text-xl text-gray-600">

@@ -429,7 +429,7 @@ const AnimatedHeader = () => {
             onClick={() => handleNavigation('/', 'home')}
           >
             <img
-              src="/images/1.png"
+              src="/images/1.webp"
               alt="Right Click Institute"
               className="w-auto object-contain h-[70px] md:h-[80px]"
             />

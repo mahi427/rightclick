@@ -40,14 +40,14 @@ const AnimatedResults = () => {
   }, [inView]);
 
   const scores = [
-    { marks: '100/100', count: 12, color: 'from-yellow-400 to-yellow-500' },
-    { marks: '99/100', count: 8, color: 'from-yellow-300 to-yellow-400' },
-    { marks: '98/100', count: 6, color: 'from-green-400 to-green-500' },
-    { marks: '97/100', count: 5, color: 'from-blue-400 to-blue-500' },
-    { marks: '96/100', count: 4, color: 'from-purple-400 to-purple-500' },
-    { marks: '95/100', count: 3, color: 'from-indigo-400 to-indigo-500' },
-    { marks: '94/100', count: 2, color: 'from-pink-400 to-pink-500' },
-    { marks: '93/100', count: 2, color: 'from-red-400 to-red-500' },
+    { marks: '100/100', count: 45, color: 'from-yellow-400 to-yellow-500' },
+    { marks: '99/100', count: 158, color: 'from-yellow-300 to-yellow-400' },
+    { marks: '98/100', count: 134, color: 'from-green-400 to-green-500' },
+    { marks: '97/100', count: 166, color: 'from-blue-400 to-blue-500' },
+    { marks: '96/100', count: 216, color: 'from-purple-400 to-purple-500' },
+    { marks: '95/100', count: 300, color: 'from-indigo-400 to-indigo-500' },
+    { marks: '94/100', count: 250, color: 'from-pink-400 to-pink-500' },
+    { marks: '93/100', count: 340, color: 'from-red-400 to-red-500' },
   ];
 
   const containerVariants = {
@@ -102,7 +102,7 @@ const AnimatedResults = () => {
           <motion.div variants={itemVariants} className="flex items-center justify-center mb-4">
             <Trophy className="w-10 h-10 text-yellow-500 mr-3" />
             <h2 className="text-4xl md:text-5xl font-bold math-text">
-              ACADEMIC EXCELLENCE 2024-25
+              ACADEMIC EXCELLENCE 
             </h2>
           </motion.div>
           <motion.p variants={itemVariants} className="text-xl text-gray-600">
