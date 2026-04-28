@@ -1,7 +1,7 @@
 ﻿import axios from 'axios';
 
 // Use your VPS IP address
-const API_URL = 'http://187.127.155.134:5000/api';
+axios.post("/api/auth/register", data)
 
 console.log('🔗 Connecting to backend:', API_URL);
 
@@ -10,7 +10,7 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  withCredentials: true,
+  
   timeout: 15000,
 });
 
