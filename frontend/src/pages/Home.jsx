@@ -6,6 +6,7 @@ import AnimatedCarousel from '../components/AnimatedCarousel';
 import About from '../components/About';
 import AnimatedPrograms from '../components/AnimatedPrograms';
 import Results from '../components/Results';
+
 import VideoIntro from '../components/VideoIntro';
 import Testimonials from '../components/Testimonials';
 import Contact from '../components/Contact';

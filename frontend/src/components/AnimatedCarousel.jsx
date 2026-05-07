@@ -14,10 +14,17 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 const AnimatedCarousel = () => {
   const slides = [
     "/images/classroom/class1.webp",
-    "/images/classroom/class5.webp",
     "/images/classroom/class2.webp",
     "/images/classroom/class3.webp",
+    "/images/classroom/class4.webp",
+    "/images/classroom/class5.webp",
     "/images/classroom/class6.webp",
+    "/images/classroom/class7.webp",
+    "/images/classroom/class8.webp",
+    "/images/classroom/class9.webp",
+    "/images/classroom/class10.webp",
+    "/images/classroom/class12.webp",
+    "/images/classroom/class13.webp",
   ];
 
   return (

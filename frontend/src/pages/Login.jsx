@@ -14,25 +14,28 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
     setLoading(true);
+    setError('');
     
     try {
+      console.log('Submitting login form...');
       await login(email, password);
+      console.log('Login successful, navigating to dashboard...');
       navigate('/dashboard');
-    } catch (err) {
-      setError(err.response?.data?.message || 'Login failed');
+    } catch (error) {
+      console.error('Login error in component:', error);
+      setError(error.response?.data?.message || 'Login failed. Please check your credentials.');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white py-12 px-4 pt-32">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white py-12 px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-md w-full bg-white/80 backdrop-blur-xl rounded-2xl shadow-xl p-8"
+        className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8"
       >
         <h2 className="text-3xl font-bold text-center mb-8">
           <span className="text-blue-600">Welcome</span>{' '}
@@ -40,7 +43,7 @@ const Login = () => {
         </h2>
 
         {error && (
-          <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+          <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg text-sm">
             {error}
           </div>
         )}

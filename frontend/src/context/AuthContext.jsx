@@ -6,7 +6,9 @@ const AuthContext = createContext(null);
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
-  if (!context) throw new Error('useAuth must be used within AuthProvider');
+  if (!context) {
+    throw new Error('useAuth must be used within AuthProvider');
+  }
   return context;
 };
 
@@ -25,9 +27,10 @@ export const AuthProvider = ({ children }) => {
 
   const loadUser = async () => {
     try {
+      console.log('Loading user profile...');
       const response = await api.get('/auth/profile');
+      console.log('User loaded:', response.data);
       setUser(response.data);
-      localStorage.setItem('user', JSON.stringify(response.data));
     } catch (error) {
       console.error('Failed to load user:', error);
       localStorage.removeItem('token');
@@ -37,43 +40,45 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const register = async (userData) => {
+  const login = async (email, password) => {
     try {
-      console.log('Registering with backend:', userData);
-      const response = await api.post('/auth/register', userData);
-      console.log('Registration response:', response.data);
+      console.log('Attempting login for:', email);
+      const response = await api.post('/auth/login', { email, password });
+      console.log('Login response:', response.data);
       
-      const { token, ...userData_ } = response.data;
+      const { token, ...userData } = response.data;
+      
       localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify(userData_));
-      setUser(userData_);
+      localStorage.setItem('user', JSON.stringify(userData));
+      setUser(userData);
       
-      toast.success(`Welcome, ${userData_.name}!`);
-      return userData_;
+      toast.success('Login successful!');
+      return userData;
     } catch (error) {
-      console.error('Registration error:', error.response?.data || error.message);
-      const message = error.response?.data?.message || 'Registration failed. Please try again.';
+      console.error('Login error details:', error);
+      const message = error.response?.data?.message || 'Login failed. Please check your credentials.';
       toast.error(message);
       throw error;
     }
   };
 
-  const login = async (email, password) => {
+  const register = async (userData) => {
     try {
-      console.log('Logging in with:', email);
-      const response = await api.post('/auth/login', { email, password });
-      console.log('Login response:', response.data);
+      console.log('Attempting registration for:', userData.email);
+      const response = await api.post('/auth/register', userData);
+      console.log('Registration response:', response.data);
       
-      const { token, ...userData } = response.data;
+      const { token, ...newUser } = response.data;
+      
       localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify(userData));
-      setUser(userData);
+      localStorage.setItem('user', JSON.stringify(newUser));
+      setUser(newUser);
       
-      toast.success(`Welcome back, ${userData.name}!`);
-      return userData;
+      toast.success('Registration successful!');
+      return newUser;
     } catch (error) {
-      console.error('Login error:', error.response?.data || error.message);
-      const message = error.response?.data?.message || 'Login failed. Please check your credentials.';
+      console.error('Registration error details:', error);
+      const message = error.response?.data?.message || 'Registration failed. Please try again.';
       toast.error(message);
       throw error;
     }
@@ -89,13 +94,11 @@ export const AuthProvider = ({ children }) => {
   const value = {
     user,
     loading,
-    register,
     login,
+    register,
     logout,
     isAuthenticated: !!user,
-    userName: user?.name || 'Student',
-    userClass: user?.class || null,
-    userEmail: user?.email || null
+    userClass: user?.class || null
   };
 
   return (
