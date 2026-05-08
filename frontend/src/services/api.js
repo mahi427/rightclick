@@ -1,7 +1,7 @@
 ﻿import axios from 'axios';
 
 // Make sure API_URL is defined
-const API_URL = 'http://localhost:5000/api';
+const API_URL = "http://187.127.155.134:5000/api";
 
 // Verify the API_URL is set correctly
 console.log('API_URL:', API_URL);
